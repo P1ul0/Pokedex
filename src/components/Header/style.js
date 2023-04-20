@@ -7,11 +7,13 @@ export const ContainerHeader = styled.div`
   background-color: #ffd3b0;
 `;
 
-export const ImgHeader = styled.img``;
+export const ImgHeader = styled.img`
+`;
 
 export const TitleHeader = styled.p`
   display: flex;
   flex-direction: column;
+
   justify-content: center;
   font-size: 28px;
   font-weight: bold;
