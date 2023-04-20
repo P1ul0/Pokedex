@@ -52,9 +52,11 @@ Error generating stack: `+o.message+`
   height: 70px;
   width: 100%;
   background-color: #ffd3b0;
-`,um=mo.img``,sm=mo.p`
+`,um=mo.img`
+`,sm=mo.p`
   display: flex;
   flex-direction: column;
+
   justify-content: center;
   font-size: 28px;
   font-weight: bold;
