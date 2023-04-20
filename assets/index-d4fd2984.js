@@ -72,4 +72,4 @@ Error generating stack: `+o.message+`
   font-size: 16px;
   font-weight: bold;
   color: #ff6d60;
-`,cm="/%7BPokedex%7D%20/assets/pokedex-b3ad1342.png",fm=()=>Ke.jsx(Ke.Fragment,{children:Ke.jsxs(im,{children:[Ke.jsx(um,{src:cm}),Ke.jsx(sm,{children:"Pokedex"}),Ke.jsx(am,{children:"Cadastre-se"})]})}),dm=()=>Ke.jsx(fm,{});function pm(){return Ke.jsx(dm,{})}Yo.createRoot(document.getElementById("root")).render(Ke.jsx(Or.StrictMode,{children:Ke.jsx(pm,{})}));
+`,cm="/Pokedex/assets/pokedex-b3ad1342.png",fm=()=>Ke.jsx(Ke.Fragment,{children:Ke.jsxs(im,{children:[Ke.jsx(um,{src:cm}),Ke.jsx(sm,{children:"Pokedex"}),Ke.jsx(am,{children:"Cadastre-se"})]})}),dm=()=>Ke.jsx(fm,{});function pm(){return Ke.jsx(dm,{})}Yo.createRoot(document.getElementById("root")).render(Ke.jsx(Or.StrictMode,{children:Ke.jsx(pm,{})}));
