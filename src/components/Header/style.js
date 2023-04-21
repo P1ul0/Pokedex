@@ -2,33 +2,41 @@ import styled from "styled-components";
 
 export const ContainerHeader = styled.div`
   display: flex;
-  height: 70px;
-  width: 100%;
-  background-color: #ffd3b0;
+  justify-content: space-between;
+  padding: 0;
+  background-color: #FE6F5E;
 `;
+export const DivHeader = styled.div`
+display: flex;
+flex-direction: row;
+`
 
 export const ImgHeader = styled.img`
+  height: 90px;
+  width: 100px;
 `;
 
 export const TitleHeader = styled.p`
   display: flex;
   flex-direction: column;
-
   justify-content: center;
   font-size: 28px;
   font-weight: bold;
-  color: #ff6d60;
+  color: #FAEBD7;
 `;
 
 export const BtnHeader = styled.button`
-  position: relative;
-  left: 70%;
-  padding: 24px 25px;
+  margin-right: 10px;
   background-color: transparent;
-  border-radius: 5px;
+  padding:0px 0px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  color: #ff6d60;
+  color: #FAEBD7;
+  &:hover{
+    background-color:#FAEBD7;
+    color: #000000;
+  }
 `;
