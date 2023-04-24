@@ -38,9 +38,9 @@ export const BodyLogin = () => {
   const salvarLogin = () => {
     const email = emailRef.current.value;
     const senha = senhaRef.current.value;
-    for(let i of fakeDB){
-      if(i.email == email && i.senha == senha){
-        alert("Login Realizado Com sucesso")
+    for (let i of fakeDB) {
+      if (i.email == email && i.senha == senha) {
+        alert("Login Realizado Com sucesso");
       }
     }
   };
@@ -52,7 +52,6 @@ export const BodyLogin = () => {
     const confirmacaoSenha = senhaCofirmacaoCadastroRef.current.value;
     // if(name == "" || email == "" || senha == "" || confirmacaoSenha == "") return alert("Todos os Campos São Obrigátorios")
     if (senha != confirmacaoSenha) return alert("Senha incorreta");
-    
 
     const user = {
       nome,
@@ -61,7 +60,7 @@ export const BodyLogin = () => {
     };
 
     fakeDB.push(user);
-    console.log(user);
+    setTelaCadastro(!telaCadastro);
   };
 
   return (
@@ -102,7 +101,7 @@ export const BodyLogin = () => {
                 <DivInput>
                   <InputLogin
                     type="text"
-                    placeholder="Nome"
+                    placeholder="Nome Completo"
                     ref={nomeCadastroRef}
                   />
                   <InputLogin
@@ -120,6 +119,11 @@ export const BodyLogin = () => {
                     placeholder="Confirmação de Senha"
                     ref={senhaCofirmacaoCadastroRef}
                   />
+                  {/* <label for="genero">Selecione o gênero:</label>
+                  <select id="genero" name="genero">
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                  </select> */}
                   <BtnLogin onClick={salvarCadastro}>Cadastre-se</BtnLogin>
                 </DivInput>
               </CompletedLogin>
