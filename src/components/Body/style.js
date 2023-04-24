@@ -141,3 +141,11 @@ export const Load = styled.div`
     }
   }
 `;
+
+
+export const TextValidation = styled.p`
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #f03355;
+`

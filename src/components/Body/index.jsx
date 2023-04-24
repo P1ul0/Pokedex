@@ -11,6 +11,7 @@ import {
   DivRigister,
   Load,
   DivLoad,
+  TextValidation,
 } from "./style";
 import img_login from "../../assets/img_login.webp";
 import { useState } from "react";
@@ -20,6 +21,10 @@ import { fakeDB } from "../../services/fakeApi";
 export const BodyLogin = () => {
   const [telaCadastro, setTelaCadastro] = useState(false);
   const [load, setLoad] = useState(false);
+  const [errorMessageLogin, setErrorMessageLogin] = useState("");
+  const [errorMessageCadastro, setErrorMessageCadastro] = useState("");
+
+
   const emailRef = useRef(null);
   const senhaRef = useRef(null);
 
@@ -35,23 +40,32 @@ export const BodyLogin = () => {
     setLoad(false);
   };
 
-  const salvarLogin = () => {
+  const login = () => {
     const email = emailRef.current.value;
     const senha = senhaRef.current.value;
     for (let i of fakeDB) {
-      if (i.email == email && i.senha == senha) {
-        alert("Login Realizado Com sucesso");
+      if (i.email !== email || i.senha !== senha) {
+        setErrorMessageLogin("E-mail/Senha incorreta");
+      } else {
+        alert("Logado Com sucesso");
       }
     }
   };
 
-  const salvarCadastro = () => {
+  const clear = () => {
+    nomeCadastroRef.current.value = null;
+    emailCadastroRef.current.value = null;
+    senhaCadastroRef.current.value = null;
+    senhaCofirmacaoCadastroRef.current.value = null;
+  };
+
+  const cadastro = () => {
     const nome = nomeCadastroRef.current.value;
     const email = emailCadastroRef.current.value;
     const senha = senhaCadastroRef.current.value;
     const confirmacaoSenha = senhaCofirmacaoCadastroRef.current.value;
     // if(name == "" || email == "" || senha == "" || confirmacaoSenha == "") return alert("Todos os Campos São Obrigátorios")
-    if (senha != confirmacaoSenha) return alert("Senha incorreta");
+    if (senha != confirmacaoSenha) return setErrorMessageCadastro("As Senhas Tem Que Ser Iguais");
 
     const user = {
       nome,
@@ -60,6 +74,8 @@ export const BodyLogin = () => {
     };
 
     fakeDB.push(user);
+    clear();
+    console.log(fakeDB);
     setTelaCadastro(!telaCadastro);
   };
 
@@ -82,7 +98,8 @@ export const BodyLogin = () => {
                     placeholder="Senha"
                     ref={senhaRef}
                   />
-                  <BtnLogin onClick={salvarLogin}>Login</BtnLogin>
+                  {errorMessageLogin && <TextValidation>{errorMessageLogin}</TextValidation>}
+                  <BtnLogin onClick={login}>Login</BtnLogin>
                 </DivInput>
               </CompletedLogin>
               <DivImgLogin img={img_login}>
@@ -124,7 +141,8 @@ export const BodyLogin = () => {
                     <option value="masculino">Masculino</option>
                     <option value="feminino">Feminino</option>
                   </select> */}
-                  <BtnLogin onClick={salvarCadastro}>Cadastre-se</BtnLogin>
+                  {errorMessageCadastro && <TextValidation>{errorMessageCadastro}</TextValidation>}
+                  <BtnLogin onClick={cadastro}>Cadastre-se</BtnLogin>
                 </DivInput>
               </CompletedLogin>
               <DivImgLogin img={img_login}>
