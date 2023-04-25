@@ -1,162 +1,222 @@
 import {
-  BtnLogin,
-  CompletedLogin,
-  ContainerLogin,
-  DivInput,
-  DivImgLogin,
-  InputLogin,
-  TitleLogin,
-  BtnRegister,
-  TextRegister,
-  DivRigister,
-  Load,
-  DivLoad,
-  TextValidation,
+    BtnLogin,
+    CompletedLogin,
+    ContainerLogin,
+    DivImgLogin,
+    TitleLogin,
+    BtnRegister,
+    TextRegister,
+    DivRigister,
+    Load,
+    DivLoad
+
 } from "./style";
 import img_login from "../../assets/img_login.webp";
-import { useState } from "react";
-import { useRef } from "react";
-import { fakeDB } from "../../services/fakeApi";
+import {useState} from "react";
+
+import {fakeDB} from "../../services/fakeApi";
+import {useFormik} from "formik";
+import {Cadastro} from "../../schema/Cadastro";
+import {InputGlobal} from "../Input";
+import { Login } from "../../schema/Login";
 
 export const BodyLogin = () => {
-  const [telaCadastro, setTelaCadastro] = useState(false);
-  const [load, setLoad] = useState(false);
-  const [errorMessageLogin, setErrorMessageLogin] = useState("");
-  const [errorMessageCadastro, setErrorMessageCadastro] = useState("");
+    const [telaCadastro, setTelaCadastro] = useState(false);
+    const [load, setLoad] = useState(false);
 
 
-  const emailRef = useRef(null);
-  const senhaRef = useRef(null);
-
-  const nomeCadastroRef = useRef(null);
-  const emailCadastroRef = useRef(null);
-  const senhaCadastroRef = useRef(null);
-  const senhaCofirmacaoCadastroRef = useRef(null);
-
-  const alterarTela = async () => {
-    setTelaCadastro(!telaCadastro);
-    setLoad(true);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setLoad(false);
-  };
-
-  const login = () => {
-    const email = emailRef.current.value;
-    const senha = senhaRef.current.value;
-    for (let i of fakeDB) {
-      if (i.email !== email || i.senha !== senha) {
-        setErrorMessageLogin("E-mail/Senha incorreta");
-      } else {
-        alert("Logado Com sucesso");
-      }
-    }
-  };
-
-  const clear = () => {
-    nomeCadastroRef.current.value = null;
-    emailCadastroRef.current.value = null;
-    senhaCadastroRef.current.value = null;
-    senhaCofirmacaoCadastroRef.current.value = null;
-  };
-
-  const cadastro = () => {
-    const nome = nomeCadastroRef.current.value;
-    const email = emailCadastroRef.current.value;
-    const senha = senhaCadastroRef.current.value;
-    const confirmacaoSenha = senhaCofirmacaoCadastroRef.current.value;
-    // if(name == "" || email == "" || senha == "" || confirmacaoSenha == "") return alert("Todos os Campos São Obrigátorios")
-    if (senha != confirmacaoSenha) return setErrorMessageCadastro("As Senhas Tem Que Ser Iguais");
-
-    const user = {
-      nome,
-      email,
-      senha,
+    const alterarTela = async () => {
+        setTelaCadastro(!telaCadastro);
+        setLoad(true);
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        setLoad(false);
     };
 
-    fakeDB.push(user);
-    clear();
-    console.log(fakeDB);
-    setTelaCadastro(!telaCadastro);
-  };
+    const login = useFormik({
+        initialValues: {
+            email: "",
+            senha: ""
+        },
+        validationSchema: Login,
+        onSubmit: (values, { resetForm}) => {
+          const { email , senha} = values;
+          for(let i of fakeDB){
+            if(i.email == email && i.senha == senha){
+              alert("Login Realizado")
+            }
+            resetForm()
+          }
+        }
 
-  return (
-    <>
-      {load == true ? (
-        <DivLoad>
-          <Load />
-        </DivLoad>
-      ) : (
-        <ContainerLogin>
-          {telaCadastro == false ? (
-            <>
-              <CompletedLogin>
-                <TitleLogin>Login</TitleLogin>
-                <DivInput>
-                  <InputLogin type="email" placeholder="Email" ref={emailRef} />
-                  <InputLogin
-                    type="password"
-                    placeholder="Senha"
-                    ref={senhaRef}
-                  />
-                  {errorMessageLogin && <TextValidation>{errorMessageLogin}</TextValidation>}
-                  <BtnLogin onClick={login}>Login</BtnLogin>
-                </DivInput>
-              </CompletedLogin>
-              <DivImgLogin img={img_login}>
-                <DivRigister>
-                  <TextRegister>Aínda Não Possui Conta ?</TextRegister>
-                  <BtnRegister onClick={alterarTela}>
-                    Registre-se já
-                  </BtnRegister>
-                </DivRigister>
-              </DivImgLogin>
-            </>
-          ) : (
-            <>
-              <CompletedLogin>
-                <TitleLogin>Cadastre-se</TitleLogin>
-                <DivInput>
-                  <InputLogin
-                    type="text"
-                    placeholder="Nome Completo"
-                    ref={nomeCadastroRef}
-                  />
-                  <InputLogin
-                    type="email"
-                    placeholder="Email"
-                    ref={emailCadastroRef}
-                  />
-                  <InputLogin
-                    type="password"
-                    placeholder="Senha"
-                    ref={senhaCadastroRef}
-                  />
-                  <InputLogin
-                    type="password"
-                    placeholder="Confirmação de Senha"
-                    ref={senhaCofirmacaoCadastroRef}
-                  />
-                  {/* <label for="genero">Selecione o gênero:</label>
-                  <select id="genero" name="genero">
-                    <option value="masculino">Masculino</option>
-                    <option value="feminino">Feminino</option>
-                  </select> */}
-                  {errorMessageCadastro && <TextValidation>{errorMessageCadastro}</TextValidation>}
-                  <BtnLogin onClick={cadastro}>Cadastre-se</BtnLogin>
-                </DivInput>
-              </CompletedLogin>
-              <DivImgLogin img={img_login}>
-                <DivRigister>
-                  <TextRegister>Já Possui Conta ?</TextRegister>
-                  <BtnRegister onClick={alterarTela}>
-                    Faça Seu Login
-                  </BtnRegister>
-                </DivRigister>
-              </DivImgLogin>
-            </>
-          )}
-        </ContainerLogin>
-      )}
-    </>
-  );
+
+    });
+
+
+    const cadastro = useFormik({
+        initialValues: {
+            nome: "",
+            email: "",
+            senha: "",
+            confirmacaoSenha: ""
+        },
+        validationSchema: Cadastro,
+        onSubmit: (values, {resetForm}) => {
+            const {nome, email, senha, confirmacaoSenha} = values
+
+
+            const user = {
+                nome,
+                email,
+                senha
+            }
+
+
+            fakeDB.push(user)
+            console.log(fakeDB);
+            alert("Cadastro Realizado")
+            setTelaCadastro(!telaCadastro)
+            resetForm()
+        }
+
+
+    });
+
+    return (
+        <> {
+            load == true ? (
+                <DivLoad>
+                    <Load/>
+                </DivLoad>
+            ) : (
+                <ContainerLogin> {
+                    telaCadastro == false ? (
+                        <>
+                            <CompletedLogin onSubmit={login}>
+                                <TitleLogin>Login</TitleLogin>
+                                <InputGlobal onBlur={
+                                        login.handleBlur
+                                    }
+                                    onChange={
+                                      login.handleChange
+                                    }
+                                    value={
+                                      login.values.email
+                                    }
+                                    type={'email'}
+                                    name="email"
+                                    placeholder="E-mail"
+                                    error={
+                                      login.touched.email && login.errors.email
+                                    }/>
+                                <InputGlobal onBlur={
+                                        login.handleBlur
+                                    }
+                                    onChange={
+                                      login.handleChange
+                                    }
+                                    value={
+                                      login.values.senha
+                                    }
+                                    type={'password'}
+                                    name="senha"
+                                    placeholder="Senha"
+                                    error={
+                                      login.touched.senha && login.errors.senha
+                                    }/>
+
+
+                                <BtnLogin>Login</BtnLogin>
+
+                            </CompletedLogin>
+                            <DivImgLogin img={img_login}>
+                                <DivRigister>
+                                    <TextRegister>Aínda Não Possui Conta ?</TextRegister>
+                                    <BtnRegister onClick={alterarTela}>
+                                        Registre-se já
+                                    </BtnRegister>
+                                </DivRigister>
+                            </DivImgLogin>
+                        </>
+                    ) : (
+                        <>
+                            <CompletedLogin onSubmit={
+                                cadastro.handleSubmit
+                            }>
+                                <TitleLogin>Cadastre-se</TitleLogin>
+                                <InputGlobal onBlur={
+                                        cadastro.handleBlur
+                                    }
+                                    onChange={
+                                        cadastro.handleChange
+                                    }
+                                    value={
+                                        cadastro.values.nome
+                                    }
+                                    type={'text'}
+                                    name="nome"
+                                    placeholder="Nome completo"
+                                    error={
+                                        cadastro.touched.nome && cadastro.errors.nome
+                                    }/>
+                                <InputGlobal onBlur={
+                                        cadastro.handleBlur
+                                    }
+                                    onChange={
+                                        cadastro.handleChange
+                                    }
+                                    value={
+                                        cadastro.values.email
+                                    }
+                                    type={'email'}
+                                    name="email"
+                                    placeholder="E-mail"
+                                    error={
+                                        cadastro.touched.email && cadastro.errors.email
+                                    }/>
+                                <InputGlobal onBlur={
+                                        cadastro.handleBlur
+                                    }
+                                    onChange={
+                                        cadastro.handleChange
+                                    }
+                                    value={
+                                        cadastro.values.senha
+                                    }
+                                    type={'password'}
+                                    name="senha"
+                                    placeholder="Senha"
+                                    error={
+                                        cadastro.touched.senha && cadastro.errors.senha
+                                    }/>
+                                <InputGlobal onBlur={
+                                        cadastro.handleBlur
+                                    }
+                                    onChange={
+                                        cadastro.handleChange
+                                    }
+                                    value={
+                                        cadastro.values.confirmacaoSenha
+                                    }
+                                    type={'password'}
+                                    name="confirmacaoSenha"
+                                    placeholder="Confirmação de Senha"
+                                    error={
+                                        cadastro.touched.confirmacaoSenha && cadastro.errors.confirmacaoSenha
+                                    }/>
+                                <BtnLogin type="submit">Cadastre-se</BtnLogin>
+                            </CompletedLogin>
+                            <DivImgLogin img={img_login}>
+                                <DivRigister>
+                                    <TextRegister>Já Possui Conta ?</TextRegister>
+                                    <BtnRegister onClick={alterarTela}>
+                                        Faça Seu Login
+                                    </BtnRegister>
+                                </DivRigister>
+                            </DivImgLogin>
+                        </>
+                    )
+                } </ContainerLogin>
+            )
+        } </>
+    );
 };

@@ -9,7 +9,7 @@ export const ContainerLogin = styled.div`
   background-color: #54defd;
   border-radius: 20px;
 `;
-export const CompletedLogin = styled.div`
+export const CompletedLogin = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,23 +23,6 @@ export const TitleLogin = styled.p`
   font-weight: bold;
   text-align: center;
   color: #000000;
-`;
-export const DivInput = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-export const InputLogin = styled.input`
-  width: 300px;
-  height: 30px;
-  outline: none;
-  border: none;
-  color: #000000;
-  margin-top: 20px;
-  background-color: transparent;
-  border-bottom: 2px solid #000000;
-  &::placeholder {
-    color: #000000;
-  }
 `;
 
 export const BtnLogin = styled.button`
@@ -143,9 +126,4 @@ export const Load = styled.div`
 `;
 
 
-export const TextValidation = styled.p`
-  margin-top: 10px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #f03355;
-`
+
