@@ -19,17 +19,27 @@ import { Cadastro } from "../../schema/Cadastro";
 import { InputGlobal } from "../Input";
 import { Login } from "../../schema/Login";
 import { InputGenero } from "../InputGenero";
+import { useNavigate } from "react-router-dom";
 
 export const BodyLogin = () => {
   const [telaCadastro, setTelaCadastro] = useState(false);
   const [load, setLoad] = useState(false);
+  const navigate = useNavigate()
 
-  const alterarTela = async () => {
+  const alterarTelaCadastro = async () => {
     setTelaCadastro(!telaCadastro);
     setLoad(true);
     await new Promise((resolve) => setTimeout(resolve, 2000));
     setLoad(false);
   };
+  const alterarTelaPerfil = async (user) => {
+    localStorage.setItem("usuário", JSON.stringify(user))
+    setLoad(true);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setLoad(false);
+    navigate("/Perfil")
+  };
+  
 
   const login = useFormik({
     initialValues: {
@@ -41,7 +51,8 @@ export const BodyLogin = () => {
       const { email, senha } = values;
       for (let i of fakeDB) {
         if (i.email == email && i.senha == senha) {
-          alert("Login Realizado");
+          alterarTelaPerfil(i)
+          
         }
         resetForm();
       }
@@ -69,7 +80,7 @@ export const BodyLogin = () => {
 
       fakeDB.push(user);
       console.log(fakeDB);
-      setTelaCadastro(!telaCadastro);
+      alterarTelaCadastro()
       resetForm();
     },
   });
@@ -110,7 +121,7 @@ export const BodyLogin = () => {
               <DivImgLogin img={img_login}>
                 <DivRigister>
                   <TextRegister>Aínda Não Possui Conta ?</TextRegister>
-                  <BtnRegister onClick={alterarTela}>
+                  <BtnRegister onClick={alterarTelaCadastro}>
                     Registre-se já
                   </BtnRegister>
                 </DivRigister>
@@ -177,7 +188,7 @@ export const BodyLogin = () => {
               <DivImgLogin img={img_login}>
                 <DivRigister>
                   <TextRegister>Já Possui Conta ?</TextRegister>
-                  <BtnRegister onClick={alterarTela}>
+                  <BtnRegister onClick={alterarTelaCadastro}>
                     Faça Seu Login
                   </BtnRegister>
                 </DivRigister>

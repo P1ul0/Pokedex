@@ -18,7 +18,7 @@ export const CompletedLogin = styled.form`
 
 export const TitleLogin = styled.p`
   position: relative;
-  top: -90px;
+  top: -70px;
   font-size: 40px;
   font-weight: bold;
   text-align: center;

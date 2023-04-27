@@ -17,10 +17,11 @@ export const InputGenero = ({
     <>
       <LabelInput for={id}>Gênero :</LabelInput>
       <SelectInput name={name} id={id} {...props}>
+        <OptionInput value={null}>Selecione Um Gênero </OptionInput>  
         <OptionInput value={masculino}>Masculino</OptionInput>
         <OptionInput value={feminino}>Feminino</OptionInput>
-        {error && <TextValidationInput>{error}</TextValidationInput>}
       </SelectInput>
+      {error && <TextValidationInput>{error}</TextValidationInput>}
     </>
   );
 };
