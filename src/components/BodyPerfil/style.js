@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const ContainerPerfil = styled.div`
-  height: 699px;
+  height: 90.7%;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   background: #54defd;
   background: linear-gradient(180deg, #54defd 0%, rgba(9, 9, 121, 1) 62%);
 `;
@@ -44,6 +45,6 @@ export const BtnPerfil = styled.button`
     border: none;
     outline: none;
     cursor: pointer;
-    background: rgb(34,193,195);
-background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+    background: rgb(131,58,180);
+background: linear-gradient(45deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
 `
