@@ -7,8 +7,6 @@ import {
   BtnRegister,
   TextRegister,
   DivRigister,
-  Load,
-  DivLoad,
 } from "./style";
 import img_login from "../../assets/img_login.webp";
 import { useState } from "react";
@@ -20,6 +18,7 @@ import { InputGlobal } from "../Input";
 import { Login } from "../../schema/Login";
 import { InputGenero } from "../InputGenero";
 import { useNavigate } from "react-router-dom";
+import { LoadGlobal } from "../LoadGlobal";
 
 export const BodyLogin = () => {
   const [telaCadastro, setTelaCadastro] = useState(false);
@@ -88,9 +87,7 @@ export const BodyLogin = () => {
   return (
     <>
       {load == true ? (
-        <DivLoad>
-          <Load />
-        </DivLoad>
+        <LoadGlobal/>
       ) : (
         <ContainerLogin>
           {telaCadastro == false ? (
@@ -194,9 +191,9 @@ export const BodyLogin = () => {
                 </DivRigister>
               </DivImgLogin>
             </>
-          )}{" "}
+          )}
         </ContainerLogin>
-      )}{" "}
+      )}
     </>
   );
 };
