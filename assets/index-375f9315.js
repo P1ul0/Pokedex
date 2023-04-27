@@ -238,7 +238,7 @@ attempted value: ${l}
   font-weight: bold;
   color: #000000;
 `,W2="/Pokedex/assets/pokedex-b3ad1342.png",$m=()=>T.jsx(T.Fragment,{children:T.jsx(b2,{children:T.jsxs(B2,{children:[T.jsx(V2,{src:W2}),T.jsx(H2,{children:"Pokedex"})]})})}),G2=()=>T.jsxs(T.Fragment,{children:[T.jsx($m,{}),T.jsx("div",{className:"corpo",children:T.jsx(U2,{})})]}),Q2="/Pokedex/assets/userM-e4f3d530.png",K2="/Pokedex/assets/userF-dccb3b52.png",Y2=oe.div`
-  height: 627px;
+  height: 699px;
   display: flex;
   flex-direction: row;
   background: #54defd;
