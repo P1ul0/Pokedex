@@ -12,7 +12,7 @@ export const InputLogin = styled.input`
   outline: none;
   border: none;
   color: #000000;
-  margin-top: 10px;
+  margin-top: 5px;
   background-color: transparent;
   border-bottom: 2px solid #000000;
   &::placeholder {
