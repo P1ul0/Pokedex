@@ -6,11 +6,11 @@ export const DivCardPokemon = styled.div`
   justify-content: center;
   align-items: center;
   height: 200px;
-  background-color: ${(props) => props.color};
-  width: 350px;
+  width: 250px;
+  background-color: ${props => props.color};
   background-color: color;
   border: none;
-  border-radius: 15px;
+  border-radius:30px;
 `;
 
 export const ImgCardPokemon = styled.img`

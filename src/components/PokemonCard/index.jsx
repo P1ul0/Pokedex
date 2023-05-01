@@ -6,17 +6,35 @@ import {
   NameCardPokemon,
   NameTypePokemon,
 } from "./style";
+import { useEffect } from "react";
 import ColorThief from "colorthief";
 
 export const PokemonCard = ({ id, nome, img, type }) => {
-  const colorThief = new ColorThief();
-  const color = colorThief.getColor(img)
-  const hexColor = `#${color[0].toString(16)}${color[1].toString(
-    16
-  )}${color[2].toString(16)}`;
+  const [bgColor, setBgColor] = useState("");
+
+  useEffect(() => {
+    getDominantColor(img).then((color) => {
+      setBgColor(`rgb(${color[0]}, ${color[1]}, ${color[2]})`);
+    });
+  }, [img]);
+
+  function getDominantColor(imageUrl) {
+    const img = new Image();
+    img.crossOrigin = "Anonymous";
+    img.src = imageUrl;
+    return new Promise((resolve) => {
+      img.onload = () => {
+        const colorThief = new ColorThief();
+        const color = colorThief.getColor(img);
+        resolve(color);
+      };
+    });
+  }
+
+  
 
   return (
-    <DivCardPokemon crossOrigin="anonymous" color={hexColor} key={id}>
+    <DivCardPokemon color={bgColor} key={id}>
       <ImgCardPokemon src={img} crossOrigin="anonymous" />
       <NameCardPokemon>
         #{id} {nome}

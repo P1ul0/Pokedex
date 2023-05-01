@@ -87,6 +87,7 @@ export const BodyLogin = () => {
   return (
     <>
       {load == true ? (
+        
         <LoadGlobal/>
       ) : (
         <ContainerLogin>
