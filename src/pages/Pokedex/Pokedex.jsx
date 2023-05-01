@@ -1,5 +1,6 @@
+import { BodyPokedex } from "../../components/BodyPokedex"
 
 
 export const Pokedex = () => {
-    return <h1>Pokedex</h1>
+    return <BodyPokedex/>
 }

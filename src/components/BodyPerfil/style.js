@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerPerfil = styled.div`
-  height: 90.7%;
+  height: 88.6%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -27,6 +27,7 @@ export const TextPerfil = styled.p`
   font-weight: bold;
   color: #fff;
   text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 `;
 export const ImgPerfil = styled.img`
   height: 400px;
