@@ -11,22 +11,33 @@ import {
   TitlePokedex,
 } from "./style";
 import { LoadGlobal } from "../LoadGlobal/index.jsx";
+import { useNavigate } from "react-router-dom";
 
 export const BodyPokedex = () => {
   const [pokemons, setPokemons] = useState([{}]);
   const [load, setLoad] = useState(false);
+  const navigate = useNavigate();
+
   useEffect(() => {
+    setLoad(true);
     apiPokemon.get(`/pokemon/?offset=0&limit=50`).then(async (res) => {
       const results = res.data.results;
       let pokemonArray = await Promise.all(
         results.map(async (e) => apiPokemon.get(e.url).then((res) => res.data))
       );
       setPokemons(pokemonArray);
-      setLoad(true);
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       setLoad(false);
     });
   }, []);
+
+  const hadleClickBack = async () => {
+    setLoad(true);
+    navigate("/Perfil");
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setLoad(false);
+  };
 
   return (
     <>
@@ -35,7 +46,7 @@ export const BodyPokedex = () => {
       ) : (
         <DivPokedex>
           <DivSuperiorPokedex>
-            <BtnBack>
+            <BtnBack onClick={hadleClickBack}>
               <ImgBack />
             </BtnBack>
             <TitlePokedex>Pokedex</TitlePokedex>

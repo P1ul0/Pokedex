@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const DivLoad = styled.div`
-  height: 550px;
-  width: 700px;
+  height: 80vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;

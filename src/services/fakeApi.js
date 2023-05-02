@@ -2,8 +2,8 @@ export let fakeDB = [
   {
     nome: "Paulo",
     email: "paulocesar@gmail.com",
-    senha: "123456",
-
+    senha: "12345678",
+    genero: "masculino",
   },
 ];
 
