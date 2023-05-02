@@ -33,10 +33,7 @@ export const BodyPokedex = () => {
   }, []);
 
   const hadleClickBack = async () => {
-    setLoad(true);
     navigate("/Perfil");
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setLoad(false);
   };
 
   return (

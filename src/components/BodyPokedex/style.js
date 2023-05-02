@@ -1,13 +1,14 @@
 import styled from "styled-components";
-import { AiOutlineArrowLeft } from "react-icons/ai";
+import {AiOutlineArrowLeft} from "react-icons/ai";
 
-export const DivPokedex = styled.div`
+export const DivPokedex = styled.div `
   display: flex;
   flex-direction: column;
-  background-color: #a2ad91;
+background: rgb(184,222,0);
+background: linear-gradient(270deg, rgba(184,222,0,1) 21%, rgba(0,255,12,1) 40%, rgba(0,212,255,1) 100%);
 `;
 
-export const DivSuperiorPokedex = styled.div`
+export const DivSuperiorPokedex = styled.div `
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -28,7 +29,7 @@ export const ImgBack = styled(AiOutlineArrowLeft)`
   width: 30px;
   object-fit: contain;
 `;
-export const BtnBack = styled.button`
+export const BtnBack = styled.button `
   height: 40px;
   width: 40px;
   background-color: transparent;
@@ -36,17 +37,18 @@ export const BtnBack = styled.button`
   border-radius: 20px;
   cursor: pointer;
 `;
-export const TitlePokedex = styled.p`
+export const TitlePokedex = styled.p `
   font-size: 50px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-weight: bold;
-  background: -webkit-linear-gradient(#c32259, #fdf42d);
+  background: linear-gradient(#6E0D25, #6E0D25,#FFFFB3);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-right: 20px;
+  /* text-shadow: 1px 1px 1px black; */
 `;
 
-export const DivPokedexCard = styled.div`
+export const DivPokedexCard = styled.div `
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
