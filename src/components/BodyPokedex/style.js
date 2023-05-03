@@ -4,8 +4,9 @@ import {AiOutlineArrowLeft} from "react-icons/ai";
 export const DivPokedex = styled.div `
   display: flex;
   flex-direction: column;
-background: rgb(184,222,0);
-background: linear-gradient(270deg, rgba(184,222,0,1) 21%, rgba(0,255,12,1) 40%, rgba(0,212,255,1) 100%);
+  background: #54defd;
+  background: linear-gradient(180deg, #54defd 0%, rgba(9, 9, 121, 1) 62%);
+  background-position: fixed ;
 `;
 
 export const DivSuperiorPokedex = styled.div `

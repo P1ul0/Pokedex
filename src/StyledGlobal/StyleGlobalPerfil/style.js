@@ -1,22 +1,30 @@
 import styled from "styled-components";
 
+export const ContainerGlobal = styled.div`
+  height: 100vh;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  background: #54defd;
+  background: linear-gradient(180deg, #54defd 0%, rgba(9, 9, 121, 1) 62%);
+`
 
-export const ContainerLogin = styled.div`
-  height: 550px;
-  width: 700px;
+export const SubContainerGlobal = styled.div`
   display: flex;
   flex-direction: row-reverse;
+  justify-content: center;
+  align-items:center;
   background-color: #54defd;
   border-radius: 20px;
 `;
-export const CompletedLogin = styled.form`
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-right: 15px;
 `;
 
-export const TitleLogin = styled.p`
+export const Title= styled.p`
   position: relative;
   top: -70px;
   font-size: 40px;
@@ -25,7 +33,7 @@ export const TitleLogin = styled.p`
   color: #000000;
 `;
 
-export const BtnLogin = styled.button`
+export const Button = styled.button`
   margin-top: 20px;
   padding: 10px;
   border: none;
@@ -36,7 +44,7 @@ export const BtnLogin = styled.button`
   margin-top: 30px;
 `;
 
-export const DivImgLogin = styled.div`
+export const DivImg = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -49,7 +57,7 @@ export const DivImgLogin = styled.div`
   width: 350px;
   object-fit: contain;
 `;
-export const DivRigister = styled.div`
+export const DivAlternativo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,13 +66,13 @@ export const DivRigister = styled.div`
   /* background-color: #54defd;
     filter: blur(10px) */
 `;
-export const TextRegister = styled.p`
+export const Text = styled.p`
   color: #000000;
   font-size: 30px;
   font-weight: bolder;
   /* z-index: 5; */
 `;
-export const BtnRegister = styled.button`
+export const ButtonAlternativo = styled.button`
   margin-top: 20px;
   width: 300px;
   height: 30px;

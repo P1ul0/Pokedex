@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
 export const DivLoad = styled.div`
-  height: 80vh;
-  width: 100vw;
+  height: ${({tamanhoH}) =>  tamanhoH ? tamanhoH :  "100vh" };
+  width: ${({tamanhoW}) =>  tamanhoW ? tamanhoW :  "100vw" } ;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: ${({background}) => background ? background : "#54defd"};
+  background: ${({background}) => background ? background : "linear-gradient(180deg, #54defd 0%, rgba(9, 9, 121, 1) 62%)"};
+  border-radius: ${({border}) => border ? border : "none"} ;
 `;
 
 export const Load = styled.div`

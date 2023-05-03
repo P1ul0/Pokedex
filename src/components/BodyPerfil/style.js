@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerPerfil = styled.div`
-  height: 90.7%;
+  height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: center;

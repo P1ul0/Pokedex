@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import {SlStar} from "react-icons/sl"
-import {TbStarFilled} from "react-icons/tb"
+
 export const DivCardPokemon = styled.div `
   display: flex;
   flex-direction: column;
@@ -23,31 +22,6 @@ export const DivTop = styled.div `
   align-items:center;
   justify-content: space-between;
 `
-
-export const ImgFavoritePokemonEmpty = styled(SlStar)`
-  height: 30px;
-  width: 30px;
-  color: ${
-    props => props.typeColor
-};
-`
-export const ImgFavoritePokemonFull = styled(TbStarFilled)`
-  height: 30px;
-  width: 30px;
-  color: ${
-    props => props.typeColor
-};
-`
-export const BtnFavorite = styled.button `
-  height: 40px;
-  width: 40px;
-  background-color: transparent;
-  border: none;
-  outline:none;
-  cursor:pointer;
-  margin-left: 10px;
-`
-
 export const IdCardPokemon = styled.p `
   font-size: 20px;
   font-weight: bold;

@@ -6,18 +6,17 @@ import {
   NameCardPokemon,
   NameTypePokemon,
   IdCardPokemon,
-  ImgFavoritePokemonEmpty,
-  ImgFavoritePokemonFull,
-  BtnFavorite,
   DivTop,
 } from "./style";
 import { useEffect } from "react";
 import ColorThief from "colorthief";
-import { addFavorite, removeFavorite } from "../../services/fakeApi";
+
+import { BtnFavorito } from "../BtnFavorito";
+import { LoadGlobal } from "../LoadGlobal";
 
 export const PokemonCard = ({ id, nome, img, type }) => {
-  const [bgColor, setBgColor] = useState("");
-  const [favorite, setFavorite] = useState(false);
+  const [bgColor, setBgColor] = useState(null);
+  
   let user = JSON.parse(localStorage.getItem("usuário"));
 
   useEffect(() => {
@@ -54,35 +53,14 @@ export const PokemonCard = ({ id, nome, img, type }) => {
       return "#262A56";
     }
   };
+ 
+  if (bgColor === null) return <LoadGlobal TamanhoW="250px"  TamanhoH="200px"  Background="black" Border="15px"/>
 
-  const hadleReplaceFavorite = () => {
-    setFavorite(!favorite);
-    addFavorite(user.email, id);
-  };
-  const hadleReplaceFavoriteRemove = () => {
-    setFavorite(!favorite);
-    removeFavorite(user.email, id);
-  };
 
   return (
     <DivCardPokemon color={bgColor} key={id}>
       <DivTop>
-        {favorite == false ? (
-          <BtnFavorite>
-            <ImgFavoritePokemonEmpty
-              onClick={hadleReplaceFavorite}
-              typeColor={getTextColor(bgColor)}
-            />
-          </BtnFavorite>
-        ) : (
-          <BtnFavorite>
-            <ImgFavoritePokemonFull
-              onClick={hadleReplaceFavoriteRemove}
-              typeColor={getTextColor(bgColor)}
-            />
-          </BtnFavorite>
-        )}
-
+        <BtnFavorito bgColor={bgColor} getTextColor={getTextColor} id={id}/>
         <IdCardPokemon typeColor={getTextColor(bgColor)}>#{id}</IdCardPokemon>
       </DivTop>
       <ImgCardPokemon src={img} />
