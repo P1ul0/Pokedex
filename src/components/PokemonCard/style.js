@@ -37,6 +37,7 @@ export const ImgCardPokemon = styled.img `
   height: 100px;
   width: 100px;
   object-fit: contain;
+  cursor: pointer;
 `;
 
 export const NameCardPokemon = styled.p `

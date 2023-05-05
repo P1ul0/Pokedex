@@ -13,8 +13,10 @@ import {
 import { LoadGlobal } from "../LoadGlobal/index.jsx";
 import { useNavigate } from "react-router-dom";
 
+
 export const BodyPokedex = () => {
   const [pokemons, setPokemons] = useState([{}]);
+
   const [load, setLoad] = useState(false);
   const navigate = useNavigate();
 
@@ -32,6 +34,9 @@ export const BodyPokedex = () => {
     });
   }, []);
 
+ 
+  
+
   const hadleClickBack = async () => {
     navigate("/Perfil");
   };
@@ -48,23 +53,31 @@ export const BodyPokedex = () => {
             </BtnBack>
             <TitlePokedex>Pokedex</TitlePokedex>
           </DivSuperiorPokedex>
-          <DivPokedexCard>
+          <DivPokedexCard >
             {pokemons &&
               pokemons.map((e) => {
-                let type = [];
+                let img = e.sprites?.other["official-artwork"].front_default;
+                const pokemon = {
+                  id : e.id,
+                  nome: e.name,
+                  img: img,
+                  type: [],
+                  stats:[]
+                }
                 if (Array.isArray(e.types)) {
                   for (let i of e.types) {
-                    type.push(i.type.name);
+                    pokemon.type.push(i.type.name);
                   }
                 }
-                let img = e.sprites?.other["official-artwork"].front_default;
+                if (Array.isArray(e.stats)) {
+                  for (let i of e.stats) {
+                    pokemon.stats.push({ base:i.base_stat , name_stat: i.stat.name})
+                  }
+                }
                 return (
                   <PokemonCard
                     key={e.id}
-                    id={e.id}
-                    nome={e.name}
-                    img={img}
-                    type={type}
+                    Pokemon={pokemon}
                   />
                 );
               })}

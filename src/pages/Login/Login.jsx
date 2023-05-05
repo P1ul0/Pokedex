@@ -3,7 +3,7 @@ import {LoginTela} from "../../components/Login";
 import {Header} from "../../components/Header";
 import {LoadGlobal} from "../../components/LoadGlobal/index"
 import {SubContainerGlobal, ContainerGlobal} from "../../StyledGlobal/StyleGlobalPerfil/style";
-import {Register} from "../../components/cadastro/index"
+import {Register} from "../../components/Register/index"
 
 export const Login = () => {
     const [telaCadastro, setTelaCadastro] = useState(false);

@@ -13,11 +13,16 @@ import ColorThief from "colorthief";
 
 import { BtnFavorito } from "../BtnFavorito";
 import { LoadGlobal } from "../LoadGlobal";
+import { PokeModal } from "../PokeModal";
 
-export const PokemonCard = ({ id, nome, img, type }) => {
+export const PokemonCard = ({Pokemon}) => {
+
+  const { id, nome, img, type , stats}  = Pokemon
+  const [pokeModal, setPokeModal] = useState(false);
+  
   const [bgColor, setBgColor] = useState(null);
   
-  let user = JSON.parse(localStorage.getItem("usuário"));
+
 
   useEffect(() => {
     getDominantColor(img).then((color) => {
@@ -53,8 +58,13 @@ export const PokemonCard = ({ id, nome, img, type }) => {
       return "#262A56";
     }
   };
+  const openModal = () => {
+    setPokeModal(!pokeModal)
+  }
+
  
   if (bgColor === null) return <LoadGlobal TamanhoW="250px"  TamanhoH="200px"  Background="black" Border="15px"/>
+  if(pokeModal === true) return <PokeModal onRequestClose={openModal} isOpen={openModal}  Pokemon={Pokemon}/>
 
 
   return (
@@ -63,7 +73,7 @@ export const PokemonCard = ({ id, nome, img, type }) => {
         <BtnFavorito bgColor={bgColor} getTextColor={getTextColor} id={id}/>
         <IdCardPokemon typeColor={getTextColor(bgColor)}>#{id}</IdCardPokemon>
       </DivTop>
-      <ImgCardPokemon src={img} />
+      <ImgCardPokemon onClick={openModal} src={img} />
       <NameCardPokemon typeColor={getTextColor(bgColor)}>
         {nome}{" "}
       </NameCardPokemon>

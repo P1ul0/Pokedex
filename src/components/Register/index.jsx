@@ -1,7 +1,7 @@
 import { fakeDB } from "../../services/fakeApi";
 import { Button, ButtonAlternativo, DivAlternativo, DivImg, Form, Text, Title } from "../../StyledGlobal/StyleGlobalPerfil/style";
 import { InputGlobal } from "../Input";
-import { InputGenero } from "../../components/InputGenero/index"
+import { InputGenero } from "../InputGenero/index"
 import { useFormik } from "formik";
 import { useMemo } from "react";
 import img_login from "../../assets/img_login.webp";
