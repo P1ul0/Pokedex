@@ -25,7 +25,7 @@ export const DivTop = styled.div `
 export const IdCardPokemon = styled.p `
   font-size: 20px;
   font-weight: bold;
-  font-family:"Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: 'Nunito', sans-serif;
   color: ${
     props => props.typeColor
 };
@@ -42,7 +42,8 @@ export const ImgCardPokemon = styled.img `
 export const NameCardPokemon = styled.p `
   font-size: 25px;
   font-weight: bold;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: 'Nunito', sans-serif;
+  text-transform: capitalize;
   color: ${
     props => props.typeColor
 };
@@ -52,7 +53,8 @@ export const NameTypePokemon = styled.a `
 
   font-size: 15px;
   font-weight: bold;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: 'Nunito', sans-serif;
+  text-transform: capitalize;
   color: ${
     props => props.typeColor
 };

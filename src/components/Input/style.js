@@ -21,7 +21,7 @@ export const InputLogin = styled.input`
 `;
 
 export const TextValidation = styled.p`
-
+font-family: 'Nunito', sans-serif;
   font-size: 15px;
   font-weight: bold;
   color: #f03355;

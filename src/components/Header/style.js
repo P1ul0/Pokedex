@@ -26,5 +26,6 @@ export const TitleHeader = styled.p `
   justify-content: center;
   font-size: 28px;
   font-weight: bold;
+  font-family: 'Nunito', sans-serif;
   color: #000000;
 `;

@@ -17,9 +17,9 @@ export const DivSuperiorPokedex = styled.div `
   border-bottom: 5px solid transparent;
   border-image: linear-gradient(
     0.25turn,
-    rgba(255, 249, 34),
-    rgba(255, 0, 128),
-    rgba(255, 0, 12)
+    rgb(0, 255, 202),
+    rgb(5, 191, 219),
+    rgb(0, 255, 202)
   );
   border-image-slice: 2;
   width: 100%;
@@ -40,11 +40,9 @@ export const BtnBack = styled.button `
 `;
 export const TitlePokedex = styled.p `
   font-size: 50px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-weight: bold;
-  background: linear-gradient(#6E0D25, #6E0D25,#FFFFB3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #0A4D68;
   margin-right: 20px;
   /* text-shadow: 1px 1px 1px black; */
 `;

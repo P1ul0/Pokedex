@@ -70,6 +70,7 @@ export const Text = styled.p`
   color: #000000;
   font-size: 30px;
   font-weight: bolder;
+  font-family: 'Nunito', sans-serif;
   /* z-index: 5; */
 `;
 export const ButtonAlternativo = styled.button`
