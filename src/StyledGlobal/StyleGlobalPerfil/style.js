@@ -30,6 +30,7 @@ export const Title= styled.p`
   font-size: 40px;
   font-weight: bold;
   text-align: center;
+  font-family: 'Nunito', sans-serif;
   color: #000000;
 `;
 

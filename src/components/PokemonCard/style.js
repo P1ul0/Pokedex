@@ -13,6 +13,7 @@ export const DivCardPokemon = styled.div `
   background-color: color;
   border: none;
   border-radius:15px;
+  
 `;
 
 export const DivTop = styled.div `

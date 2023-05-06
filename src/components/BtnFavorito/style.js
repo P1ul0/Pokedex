@@ -24,4 +24,5 @@ export const BtnFavorite = styled.button `
   outline:none;
   cursor:pointer;
   margin-left: 10px;
+  z-index: 40
 `

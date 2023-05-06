@@ -17,7 +17,7 @@ import { PokeModal } from "../PokeModal";
 
 export const PokemonCard = ({Pokemon}) => {
 
-  const { id, nome, img, type , stats}  = Pokemon
+  const { id, nome, img, type}  = Pokemon
   const [pokeModal, setPokeModal] = useState(false);
   
   const [bgColor, setBgColor] = useState(null);
@@ -61,16 +61,17 @@ export const PokemonCard = ({Pokemon}) => {
   const openModal = () => {
     setPokeModal(!pokeModal)
   }
+  
 
  
   if (bgColor === null) return <LoadGlobal TamanhoW="250px"  TamanhoH="200px"  Background="black" Border="15px"/>
-  if(pokeModal === true) return <PokeModal onRequestClose={openModal} isOpen={openModal}  Pokemon={Pokemon}/>
+  if(pokeModal === true) return <PokeModal onRequestClose={openModal} isOpen={openModal}  Pokemon={Pokemon} Background={bgColor} TextColor={getTextColor(bgColor)}/>
 
 
   return (
-    <DivCardPokemon color={bgColor} key={id}>
+    <DivCardPokemon  color={bgColor} key={id}>
       <DivTop>
-        <BtnFavorito bgColor={bgColor} getTextColor={getTextColor} id={id}/>
+        <BtnFavorito  bgColor={bgColor} getTextColor={getTextColor} id={id}/>
         <IdCardPokemon typeColor={getTextColor(bgColor)}>#{id}</IdCardPokemon>
       </DivTop>
       <ImgCardPokemon onClick={openModal} src={img} />
