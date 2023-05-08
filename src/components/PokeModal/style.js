@@ -53,10 +53,12 @@ export const ImgClose = styled(TfiClose)`
 
 export const DivConteudo = styled.div`
   height: 50vh;
-  width: 50vw;
+  width: 60vw;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
+  margin-top: 40px;
 `;
 export const SubDivConteudo = styled.div`
   width: ${({ Width }) => (Width ? Width : "1000px")};
@@ -67,7 +69,7 @@ export const SubDivConteudo = styled.div`
   align-items: center;
 `;
 export const ImgPokemon = styled.img`
-  width: 80%;
+  width: 90%;
   object: contain;
 `;
 export const DivTypePokemon = styled.div`
@@ -75,19 +77,41 @@ export const DivTypePokemon = styled.div`
   flex-wrap: wrap;
   align-items: center;
 `;
+
+
+export const DivScroll = styled.div`
+  width: 100vw;
+  height: 40vh;
+  overflow-x: auto;
+  white-space: nowrap;
+ 
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({color}) => color ? color : "rgba(0, 0, 0)"};
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #23dd7a;
+  }
+`;
 export const DivStats = styled.div`
   width: 100%;
-  display: flex;
-flex-flow: row wrap;
+  display: inline-block;
+  flex-flow: row wrap;
   line-break: strict;
   align-items: center;
-  margin-left: 30px;
 `;
 export const DivTitle = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-start;
-`
+`;
 
 export const StatusBar = styled.div`
   width: 100%;

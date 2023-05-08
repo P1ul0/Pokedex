@@ -23,7 +23,7 @@ export const BtnFavorito = ({bgColor, getTextColor, id}) => {
                         getTextColor(bgColor)
                     }/> : <ImgFavoritePokemonEmpty onClick={hadleReplaceFavorite}
                     typeColor={
-                        getTextColor(bgColor)
+                       getTextColor(bgColor)
                     }/>
             } </BtnFavorite>
 

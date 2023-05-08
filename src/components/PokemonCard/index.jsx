@@ -65,7 +65,7 @@ export const PokemonCard = ({Pokemon}) => {
 
  
   if (bgColor === null) return <LoadGlobal TamanhoW="250px"  TamanhoH="200px"  Background="black" Border="15px"/>
-  if(pokeModal === true) return <PokeModal onRequestClose={openModal} isOpen={openModal}  Pokemon={Pokemon} Background={bgColor} TextColor={getTextColor(bgColor)}/>
+  if(pokeModal === true) return <PokeModal onRequestClose={openModal} isOpen={openModal}  Pokemon={Pokemon} bgColor={bgColor} getTextColor={getTextColor}/>
 
 
   return (
