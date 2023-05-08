@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { DivSuperiorPokedex, ImgBack, BtnBack, TitlePokedex } from "./style";
 
-export const HeaderPokedex = () => {
+export const HeaderPokedex = ({Title}) => {
   const navigate = useNavigate();
 
   const hadleClickBack = () => {
@@ -13,7 +13,7 @@ export const HeaderPokedex = () => {
       <BtnBack onClick={hadleClickBack}>
         <ImgBack />
       </BtnBack>
-      <TitlePokedex>Pokedex</TitlePokedex>
+      <TitlePokedex>{Title}</TitlePokedex>
     </DivSuperiorPokedex>
   );
 };

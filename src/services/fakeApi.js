@@ -34,6 +34,9 @@ export const addFavorite = (email, value) => {
 export const removeFavorite = (email, value) => {
   const user = findUser(email);
 
-  user.favorito.pop(value);
+  let remove =  user.favorito.filter(item => item !== value)
+  
+  user.favorito.length =0
+  user.favorito.push(remove)
   localStorage.setItem("usuário", JSON.stringify(user));
 };
