@@ -18,3 +18,10 @@ export const DivFavoritoCard = styled.div `
   padding: 10px 12px;
   margin-top: 30px;
 `;
+
+export const EmptyText = styled.div`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`

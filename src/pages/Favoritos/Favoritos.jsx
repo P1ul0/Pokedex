@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { apiPokemon } from "../../services/apiPokemon";
 import { LoadGlobal } from "../../components/LoadGlobal";
 import { HeaderPokedex } from "../../components/HeaderPokedex";
-import { DivFavorito,DivFavoritoCard } from "./style";
-import { PokemonCard} from "../../components/PokemonCard/index.jsx"
+import { DivFavorito, DivFavoritoCard, EmptyText } from "./style";
+import { PokemonCard } from "../../components/PokemonCard/index.jsx";
+import { Text } from "../../components/PokeModal/style";
 
 export const Favoritos = () => {
   const [pokemons, setPokemons] = useState([{}]);
@@ -21,11 +22,10 @@ export const Favoritos = () => {
       );
       setPokemons(favoritesArray);
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      
     };
     fetchFavorites();
     setLoad(false);
-  }, [user.favorito]);
+  }, [user.favorito.length === 0]);
 
   return (
     <>
@@ -34,33 +34,39 @@ export const Favoritos = () => {
       ) : (
         <DivFavorito>
           <HeaderPokedex Title="Favoritos" />
-          <DivFavoritoCard>
-            {pokemons &&
-              pokemons.map((e) => {
-                let img = e.sprites?.other["official-artwork"].front_default;
-                const pokemon = {
-                  id: e.id,
-                  nome: e.name,
-                  img: img,
-                  type: [],
-                  stats: [],
-                };
-                if (Array.isArray(e.types)) {
-                  for (let i of e.types) {
-                    pokemon.type.push(i.type.name);
+          {pokemons.length === 0 ? (
+            <EmptyText>
+              <Text Size="80px" textColor ="black">Favorito Vazio</Text>
+            </EmptyText>
+          ) : (
+            <DivFavoritoCard>
+              {pokemons &&
+                pokemons.map((e) => {
+                  let img = e.sprites?.other["official-artwork"].front_default;
+                  const pokemon = {
+                    id: e.id,
+                    nome: e.name,
+                    img: img,
+                    type: [],
+                    stats: [],
+                  };
+                  if (Array.isArray(e.types)) {
+                    for (let i of e.types) {
+                      pokemon.type.push(i.type.name);
+                    }
                   }
-                }
-                if (Array.isArray(e.stats)) {
-                  for (let i of e.stats) {
-                    pokemon.stats.push({
-                      base: i.base_stat,
-                      name_stat: i.stat.name,
-                    });
+                  if (Array.isArray(e.stats)) {
+                    for (let i of e.stats) {
+                      pokemon.stats.push({
+                        base: i.base_stat,
+                        name_stat: i.stat.name,
+                      });
+                    }
                   }
-                }
-                return <PokemonCard key={e.id} Pokemon={pokemon} />;
-              })}
-          </DivFavoritoCard>
+                  return <PokemonCard key={e.id} Pokemon={pokemon} />;
+                })}
+            </DivFavoritoCard>
+          )}
         </DivFavorito>
       )}
     </>

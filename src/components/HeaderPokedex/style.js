@@ -2,6 +2,7 @@ import styled from "styled-components";
 import {AiOutlineArrowLeft} from "react-icons/ai";
 
 export const DivSuperiorPokedex = styled.div `
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;

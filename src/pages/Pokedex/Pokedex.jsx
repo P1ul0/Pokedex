@@ -31,7 +31,7 @@ export const Pokedex = () => {
         <LoadGlobal />
       ) : (
         <DivPokedex>
-          <HeaderPokedex Title="Pokedex" />
+          <HeaderPokedex Title="Pokedex" Button="1" />
           <DivPokedexCard>
             {pokemons &&
               pokemons.map((e) => {

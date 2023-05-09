@@ -55,7 +55,7 @@ export const DivImg = styled.div`
   background-image: url(${(props) => props.img});
   border-radius: 20px;
   height: 550px;
-  width: 350px;
+  width: 400px;
   object-fit: contain;
 `;
 export const DivAlternativo = styled.div`
