@@ -11,9 +11,9 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Login />}/>
-      <Route path="/Perfil" element={isUserLoggedIn ? <Perfil/> : <Navigate to="/" replace/>}/>
-      <Route path="/Pokedex" element={isUserLoggedIn ? <Pokedex/> : <Login/>}/>
-      <Route path="/Favoritos" element={isUserLoggedIn ? <Favoritos/> : <Login/>}/>
+      <Route path="/Perfil" element={<Perfil/>}/>
+      <Route path="/Pokedex" element={<Pokedex/>}/>
+      <Route path="/Favoritos" element={<Favoritos/>}/>
     </Routes>
   );
 }
