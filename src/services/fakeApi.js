@@ -24,7 +24,7 @@ export const addFavorite = (email, value) => {
   console.log(user);
   if (user != null) {
     if (user.favorito== null) {
-      user.favorito = []; // cria um novo array de favoritos se não existir
+      user.favorito = [];
     }
     user.favorito.push(value);
     localStorage.setItem("usuário", JSON.stringify(user));
